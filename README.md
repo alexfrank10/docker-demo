@@ -40,3 +40,30 @@ Connect to mysql database inside container
 ```bash
 docker exec -ti mysqldb mysql -u root -p
 ```
+
+pip3 install mysql-connector-python
+
+pip3 freeze | findstr mysql-connector-python >> requirements.txt
+
+Build image
+
+```bash
+docker build --tag image_name .
+```
+
+
+
+
+Add container to the database and the run the container
+```bash
+docker run \
+  --rm -d \
+  --network mysqlnet \
+  --name rest-server \
+  -p 3000:5000 \
+  python-docker-dev
+
+  ```
+
+
+  docker-compose -f docker-compose.dev.yml up --build
